@@ -1,8 +1,8 @@
 import { CharacterRepository } from "@/domain/characterRepository";
-import { Character } from "@/domain/charater";
+import { CharacterDTO } from "@/infraestructure/characterDTO";
 
 export async function getAllCharacters(
   repository: CharacterRepository
-): Promise<Character[]> {
+): Promise<CharacterDTO[]> {
   return repository.getAll();
 }

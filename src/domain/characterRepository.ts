@@ -1,5 +1,5 @@
-import { Character } from "./charater";
+import { CharacterDTO } from "@/infraestructure/characterDTO";
 
 export interface CharacterRepository {
-  getAll: () => Promise<Character[]>;
+  getAll: () => Promise<CharacterDTO[]>;
 }
