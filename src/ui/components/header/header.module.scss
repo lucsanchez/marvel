@@ -1,5 +1,18 @@
 .container {
-    display: flex;
-    background: var(--marvel-black);
-    padding: 20px;
+  display: flex;
+  background: var(--marvel-black);
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.favorite_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.favorite_counter {
+  color: white;
 }

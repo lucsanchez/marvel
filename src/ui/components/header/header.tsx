@@ -1,5 +1,6 @@
 import { ROUTES } from "@/routes";
 import styles from "./header.module.scss";
+import { FilledHearIcon } from "../icons/filledHeartIcon";
 
 export const Header = () => {
   return (
@@ -11,6 +12,10 @@ export const Header = () => {
           src="/assets/logos/marvel-logo.png"
         ></img>
       </a>
+      <div className={styles.favorite_container}>
+        <FilledHearIcon />
+        <p className={styles.favorite_counter}>3</p>
+      </div>
     </div>
   );
 };

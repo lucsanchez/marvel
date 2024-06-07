@@ -1,0 +1,12 @@
+.characters_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-around;
+  margin: 16px 48px;
+
+  &::after {
+    content: "";
+    flex: auto;
+  }
+}
