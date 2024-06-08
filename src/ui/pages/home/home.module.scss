@@ -1,8 +1,12 @@
 .main_container {
-  margin: 16px 48px;
+  margin: 16px 8px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @include from-screen(md) {
+    margin: 16px 48px;
+  }
 }
 
 .characters_list {

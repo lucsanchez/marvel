@@ -1,11 +1,19 @@
 .card {
   display: flex;
   flex-direction: column;
-  width: 172px;
+  flex-basis: 45%;
+  @include from-screen(md) {
+    width: 172px;
+    flex-basis: auto;
+  }
 }
 
 .image {
-  height: 190px;
+  height: 160px;
+  width: 100%;
+  @include from-screen(md) {
+    height: 190px;
+  }
 }
 
 .separator {

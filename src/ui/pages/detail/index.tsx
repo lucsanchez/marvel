@@ -11,8 +11,7 @@ export const DetailPage = () => {
       <div className={styles.banner}>
         <div className={styles.detail_content}>
           <img
-            width={320}
-            height={320}
+            className={styles.image}
             src={character.image}
             alt={character.name}
           />

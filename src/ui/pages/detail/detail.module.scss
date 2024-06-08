@@ -5,9 +5,24 @@
 
 .detail_content {
   display: flex;
+  flex-direction: column;
 
-  width: 960px;
-  margin: auto;
+  @include from-screen(md) {
+    flex-direction: row;
+  }
+
+  @include from-screen(xl) {
+    width: 960px;
+    margin: auto;
+  }
+}
+
+.image {
+  width: 100%;
+  @include from-screen(md) {
+    width: 320px;
+    height: 320px;
+  }
 }
 
 .title_container {
@@ -17,8 +32,14 @@
 }
 
 .information {
-  padding: 48px 0 48px 48px;
-  flex-grow: 1;
+  padding: 0 8px;
+  @include from-screen(md) {
+    padding: 48px;
+    flex-grow: 1;
+  }
+  @include from-screen(xl) {
+    padding: 48px 0 48px 48px;
+  }
 }
 
 .title {
