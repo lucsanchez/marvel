@@ -15,11 +15,19 @@ export const Favorite: FC<FavoriteProps> = ({ character }) => {
   return (
     <div>
       {isFavorited ? (
-        <button className={styles.button_icon} onClick={handleOnRemoveFavorite}>
+        <button
+          aria-label={`favorite ${character.name}`}
+          className={styles.button_icon}
+          onClick={handleOnRemoveFavorite}
+        >
           <SmallFilledHeartIcon />
         </button>
       ) : (
-        <button className={styles.button_icon} onClick={handleOnAddFavorite}>
+        <button
+          aria-label={`unfavorite ${character.name}`}
+          className={styles.button_icon}
+          onClick={handleOnAddFavorite}
+        >
           <DefaultHeartIcon />
         </button>
       )}
