@@ -8,22 +8,27 @@ export const DetailPage = () => {
 
   return (
     <>
-      <div className={styles.banner}>
-        <div className={styles.detail_content}>
-          <img
-            className={styles.image}
-            src={character.image}
-            alt={character.name}
-          />
-          <div className={styles.information}>
-            <div className={styles.title_container}>
-              <h1 className={styles.title}>{character.name}</h1>
-              <Favorite character={character} />
+      {character ? (
+        <div className={styles.banner}>
+          <div className={styles.detail_content}>
+            <img
+              alt={character.name}
+              className={styles.image}
+              src={character.image}
+            />
+            <div className={styles.information}>
+              <div className={styles.title_container}>
+                <h1 className={styles.title}>{character.name}</h1>
+                <Favorite character={character} />
+              </div>
+              <p className={styles.description}>{character.description}</p>
             </div>
-            <p className={styles.description}>{character.description}</p>
           </div>
         </div>
-      </div>
+      ) : (
+        <div>Not found character</div>
+      )}
+
       <div>{loading ? <div>loading</div> : <ComicList comics={data} />}</div>
     </>
   );

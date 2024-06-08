@@ -6,6 +6,7 @@ export type CharactersContextType = {
   loading: boolean;
   onFilterCharacters: (key: string) => Promise<void>;
   resetFilter: () => Promise<void>;
+  getCharacter: (id: string) => Promise<CharacterDTO>;
 };
 
 export const CharactersContext = createContext<CharactersContextType>({
@@ -16,5 +17,14 @@ export const CharactersContext = createContext<CharactersContextType>({
   resetFilter: async () => {
     return undefined;
   },
-  loading: false
+  loading: false,
+  getCharacter: (_id) => {
+    return Promise.resolve({
+      id: _id,
+      name: "Sample Character",
+      title: "",
+      image: "",
+      description: ""
+    });
+  }
 });

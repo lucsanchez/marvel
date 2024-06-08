@@ -1,4 +1,5 @@
 import { getAllCharacters } from "@/application/characters/getAll";
+import { getCharacterById } from "@/application/characters/getCharacterById";
 import { getFilteredCharactersByName } from "@/application/characters/getFilteredByname";
 import { CharactersContext } from "@/context/charactersContext";
 import { createApiCharacaterRepository } from "@/infraestructure/apiCharacterRepository";
@@ -34,13 +35,19 @@ export const CharactersProvider: FC<PropsWithChildren> = ({ children }) => {
     setFilteredCharacters(response);
   };
 
+  const getCharacter = async (id: string) => {
+    const response = await getCharacterById(repository, id);
+    return response;
+  };
+
   return (
     <CharactersContext.Provider
       value={{
         filteredCharacters,
         loading,
         onFilterCharacters,
-        resetFilter
+        resetFilter,
+        getCharacter
       }}
     >
       {children}

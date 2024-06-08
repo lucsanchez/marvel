@@ -8,7 +8,8 @@ export function createApiCharacaterRepository(): CharacterRepository {
   return {
     getAll,
     getFilteredByName,
-    getComics
+    getComics,
+    getCharacterById
   };
 }
 
@@ -36,6 +37,21 @@ async function getFilteredByName(query: string) {
     image: `${character.thumbnail.path}.${character.thumbnail.extension}`,
     name: character.name
   }));
+}
+
+async function getCharacterById(id: string) {
+  const response = await fetch(
+    `https://gateway.marvel.com:443/v1/public/characters/${id}?apikey=${PUBLIC_KEY}`
+  );
+  const json = await response.json();
+  const character = json.data.results[0];
+
+  return {
+    id: character.id,
+    description: character.description,
+    image: `${character.thumbnail.path}.${character.thumbnail.extension}`,
+    name: character.name
+  };
 }
 
 async function getComics(characterId: string) {
