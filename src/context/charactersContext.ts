@@ -3,6 +3,7 @@ import { createContext } from "react";
 
 export type CharactersContextType = {
   filteredCharacters: CharacterDTO[];
+  loading: boolean;
   onFilterCharacters: (key: string) => Promise<void>;
   resetFilter: () => Promise<void>;
 };
@@ -14,5 +15,6 @@ export const CharactersContext = createContext<CharactersContextType>({
   },
   resetFilter: async () => {
     return undefined;
-  }
+  },
+  loading: false
 });

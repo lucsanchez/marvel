@@ -12,11 +12,15 @@ export const CharactersProvider: FC<PropsWithChildren> = ({ children }) => {
     []
   );
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     async function loadHeroesCharacters() {
       const response = await getAllCharacters(repository);
       setFilteredCharacters(response);
+      setLoading(false);
     }
+    setLoading(true);
     loadHeroesCharacters();
   }, []);
 
@@ -34,6 +38,7 @@ export const CharactersProvider: FC<PropsWithChildren> = ({ children }) => {
     <CharactersContext.Provider
       value={{
         filteredCharacters,
+        loading,
         onFilterCharacters,
         resetFilter
       }}
