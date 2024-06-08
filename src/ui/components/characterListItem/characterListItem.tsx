@@ -1,24 +1,16 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import styles from "./characterListItem.module.scss";
-import { DefaultHeartIcon } from "../icons/defaultHeartIcon";
-import { FavoritesContext } from "@/context/favoritesContext";
 import { CharacterDTO } from "@/infraestructure/characterDTO";
-import { SmallFilledHeartIcon } from "../icons/smallFIlledHearIcon";
+import { useCharacterListItem } from "./use-character-list-item";
+import { Favorite } from "../favorite/favorite";
 
 export const CharacterListItem: FC<CharacterDTO> = (character) => {
-  const { isFavorite, onAddFavorite, onRemoveFavorite } =
-    useContext(FavoritesContext);
+  const { handleCharacterClick } = useCharacterListItem(character);
 
-  const handleOnAddFavorite = () => {
-    onAddFavorite(character);
-  };
-
-  const handleOnRemoveFavorite = () => {
-    onRemoveFavorite(character.id);
-  };
   return (
     <div className={styles.card}>
       <img
+        onClick={handleCharacterClick}
         className={styles.image}
         src={character.image}
         alt={character.name}
@@ -26,23 +18,7 @@ export const CharacterListItem: FC<CharacterDTO> = (character) => {
       <div className={styles.separator} />
       <div className={styles.text_container}>
         <p className={styles.title}>{character.name}</p>
-        <div>
-          {isFavorite(character.id) ? (
-            <button
-              className={styles.button_icon}
-              onClick={handleOnRemoveFavorite}
-            >
-              <SmallFilledHeartIcon />
-            </button>
-          ) : (
-            <button
-              className={styles.button_icon}
-              onClick={handleOnAddFavorite}
-            >
-              <DefaultHeartIcon />
-            </button>
-          )}
-        </div>
+        <Favorite character={character} />
       </div>
     </div>
   );

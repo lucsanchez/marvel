@@ -1,4 +1,4 @@
-type Thumbnail = {
+export type Thumbnail = {
   extension: "jpg" | "jpeg" | "png";
   path: string;
 };

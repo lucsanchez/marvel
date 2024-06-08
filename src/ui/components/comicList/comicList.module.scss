@@ -1,0 +1,28 @@
+.card_container {
+  display: flex;
+  justify-content: stretch;
+  gap: 16px;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--marvel-red);
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 960px;
+  margin: auto;
+}

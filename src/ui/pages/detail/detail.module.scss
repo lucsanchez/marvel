@@ -1,0 +1,32 @@
+.banner {
+  width: 100%;
+  background: var(--marvel-black);
+}
+
+.detail_content {
+  display: flex;
+
+  width: 960px;
+  margin: auto;
+}
+
+.title_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.information {
+  padding: 48px 0 48px 48px;
+  flex-grow: 1;
+}
+
+.title {
+  color: white;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.description {
+  color: white;
+}
