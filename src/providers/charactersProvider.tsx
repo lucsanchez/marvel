@@ -1,4 +1,5 @@
-import { getAllCharacters } from "@/application/getAllCharacters";
+import { getAllCharacters } from "@/application/characters/getAll";
+import { getFilteredCharactersByName } from "@/application/characters/getFilteredByname";
 import { CharactersContext } from "@/context/charactersContext";
 import { createApiCharacaterRepository } from "@/infraestructure/apiCharacterRepository";
 import { CharacterDTO } from "@/infraestructure/characterDTO";
@@ -16,18 +17,25 @@ export const CharactersProvider: FC<PropsWithChildren> = ({ children }) => {
       const response = await getAllCharacters(repository);
       setFilteredCharacters(response);
     }
-    debugger;
     loadHeroesCharacters();
   }, []);
 
-  const onFilterCharacters = (value: string) => {
-    return [];
+  const onFilterCharacters = async (query: string) => {
+    const response = await getFilteredCharactersByName(repository, query);
+    setFilteredCharacters(response);
   };
+
+  const resetFilter = async () => {
+    const response = await getAllCharacters(repository);
+    setFilteredCharacters(response);
+  };
+
   return (
     <CharactersContext.Provider
       value={{
         filteredCharacters,
-        onFilterCharacters
+        onFilterCharacters,
+        resetFilter
       }}
     >
       {children}
