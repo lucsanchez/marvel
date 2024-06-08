@@ -2,7 +2,7 @@ import { CharacterRepository } from "@/domain/characterRepository";
 import { Character } from "@/domain/charater";
 import { Comic } from "@/domain/comic";
 
-const PUBLIC_KEY = "a29c155518726fb1f6707e66fdea8481";
+const { VITE_ENDPOINT_API_KEY: PUBLIC_KEY } = import.meta.env;
 
 export function createApiCharacaterRepository(): CharacterRepository {
   return {
