@@ -1,21 +1,16 @@
-import { ChangeEvent, useContext } from "react";
+import { ChangeEvent } from "react";
 import { SearchIcon } from "../icons/searchIcon";
 import styles from "./searchbar.module.scss";
-import { CharactersContext } from "@/context/charactersContext";
+import { UseSearchbar } from "./use-searchbar";
 
 export const Searchbar = () => {
-  const { onFilterCharacters, resetFilter, filteredCharacters } =
-    useContext(CharactersContext);
+  const { characters, handleOnFilter } = UseSearchbar();
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    if (value.length >= 3) {
-      onFilterCharacters(value);
-    }
-    if (!value) {
-      resetFilter();
-    }
+    handleOnFilter(value);
   };
+
   return (
     <div className={styles.search_container}>
       <div className={styles.search_bar}>
@@ -28,7 +23,7 @@ export const Searchbar = () => {
           placeholder="SEARCH A CHARACTER..."
         />
       </div>
-      <div className={styles.results}>{filteredCharacters.length} RESULTS</div>
+      <div className={styles.results}>{characters.length} RESULTS</div>
     </div>
   );
 };

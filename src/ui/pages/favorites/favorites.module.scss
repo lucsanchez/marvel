@@ -1,0 +1,18 @@
+.main_container {
+  margin: 16px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fav_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-around;
+
+  &::after {
+    content: "";
+    flex: auto;
+  }
+}
