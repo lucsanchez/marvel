@@ -5,61 +5,36 @@ import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 // https://vitejs.dev/config/
 
-export default defineConfig(({ command, mode }) => {
-  if (command === "build") {
-    return {
-      plugins: [react()],
-      resolve: {
-        alias: {
-          "@": path.resolve(__dirname, "./src")
-        }
-      },
-      css: {
-        preprocessorOptions: {
-          scss: {
-            additionalData: '@import "@/ui/styles/mixins";'
-          }
-        }
-      },
-      build: {
-        minify: "terser",
-        terserOptions: {
-          compress: {
-            drop_console: true
-          }
-        },
-        rollupOptions: {
-          output: {
-            manualChunks: undefined
-          }
+export default defineConfig(({ mode }) => {
+  const isProduction = mode === "production";
+  console.log("mode", mode);
+  return {
+    plugins: [react()],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src")
+      }
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "@/ui/styles/mixins";'
         }
       }
-    };
-  } else {
-    return {
-      plugins: [react(), cssInjectedByJsPlugin()],
-      resolve: {
-        alias: {
-          "@": path.resolve(__dirname, "./src")
+    },
+    build: {
+      minify: isProduction ? "terser" : false,
+      sourcemap: !isProduction,
+      terserOptions: {
+        compress: {
+          drop_console: true
         }
       },
-      css: {
-        preprocessorOptions: {
-          scss: {
-            additionalData: '@import "@/ui/styles/mixins";'
-          }
-        }
-      },
-      build: {
-        minify: false,
-        rollupOptions: {
-          output: {
-            manualChunks: {
-              vendor: ["react", "react-dom"]
-            }
-          }
+      rollupOptions: {
+        output: {
+          manualChunks: undefined
         }
       }
-    };
-  }
+    }
+  };
 });
