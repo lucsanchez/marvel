@@ -8,6 +8,7 @@ export type FavoritesContextType = {
   onRemoveFavorite: (id: string) => void;
   isFavorite: (id: string) => boolean;
   onFilterFavorites: (query: string) => void;
+  resetFavoriteFilter: () => void;
 };
 
 export const FavoritesContext = createContext<FavoritesContextType>({
@@ -21,6 +22,9 @@ export const FavoritesContext = createContext<FavoritesContextType>({
   },
   isFavorite: (_id) => false,
   onFilterFavorites: (_query) => {
+    return undefined;
+  },
+  resetFavoriteFilter: () => {
     return undefined;
   }
 });

@@ -9,6 +9,7 @@ import { FC, PropsWithChildren, useEffect, useState } from "react";
 const repository = createApiCharacaterRepository();
 
 export const CharactersProvider: FC<PropsWithChildren> = ({ children }) => {
+  const [characters, setCharacters] = useState<CharacterDTO[]>([]);
   const [filteredCharacters, setFilteredCharacters] = useState<CharacterDTO[]>(
     []
   );
@@ -18,6 +19,7 @@ export const CharactersProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     async function loadHeroesCharacters() {
       const response = await getAllCharacters(repository);
+      setCharacters(response);
       setFilteredCharacters(response);
       setLoading(false);
     }
@@ -31,8 +33,7 @@ export const CharactersProvider: FC<PropsWithChildren> = ({ children }) => {
   };
 
   const resetFilter = async () => {
-    const response = await getAllCharacters(repository);
-    setFilteredCharacters(response);
+    setFilteredCharacters(characters);
   };
 
   const getCharacter = async (id: string) => {

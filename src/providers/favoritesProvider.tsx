@@ -32,8 +32,12 @@ export const FavoritesProvider: FC<PropsWithChildren> = ({ children }) => {
       );
       setFilteredFavorites(newFavorites);
     } else {
-      setFilteredFavorites(favorites);
+      resetFavoriteFilter();
     }
+  };
+
+  const resetFavoriteFilter = () => {
+    setFilteredFavorites(favorites);
   };
 
   return (
@@ -44,7 +48,8 @@ export const FavoritesProvider: FC<PropsWithChildren> = ({ children }) => {
         onAddFavorite,
         onRemoveFavorite,
         isFavorite,
-        onFilterFavorites
+        onFilterFavorites,
+        resetFavoriteFilter
       }}
     >
       {children}

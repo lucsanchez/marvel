@@ -1,17 +1,28 @@
 import { CharactersContext } from "@/context/charactersContext";
 import { FavoritesContext } from "@/context/favoritesContext";
 import { ROUTES } from "@/routes";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export const UseSearchbar = () => {
   const { onFilterCharacters, resetFilter, filteredCharacters } =
     useContext(CharactersContext);
 
-  const { filteredFavorites, onFilterFavorites } = useContext(FavoritesContext);
+  const { filteredFavorites, onFilterFavorites, resetFavoriteFilter } =
+    useContext(FavoritesContext);
   const location = useLocation();
 
   const isFavoritePath = location.pathname === ROUTES.FAVORITES;
+
+  useEffect(() => {
+    return () => {
+      if (isFavoritePath) {
+        resetFavoriteFilter();
+      } else {
+        resetFilter();
+      }
+    };
+  }, [isFavoritePath]);
 
   const characters = isFavoritePath ? filteredFavorites : filteredCharacters;
 
