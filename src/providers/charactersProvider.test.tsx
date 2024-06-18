@@ -1,4 +1,4 @@
-import { render, waitFor } from "@testing-library/react";
+import { act, render, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import { CharactersProvider } from "./charactersProvider";
 import { CharactersContext } from "@/context/charactersContext";
@@ -66,7 +66,9 @@ describe("CharactersProvider Component", () => {
       expect(contextValue.filteredCharacters).toEqual(mockCharacters)
     );
 
-    await contextValue.onFilterCharacters("Iron");
+    act(() => {
+      contextValue.onFilterCharacters("Iron");
+    });
     await waitFor(() =>
       expect(contextValue.filteredCharacters).toEqual(mockCharacters)
     );
@@ -89,7 +91,10 @@ describe("CharactersProvider Component", () => {
       expect(contextValue.filteredCharacters).toEqual(mockCharacters)
     );
 
-    contextValue.resetFilter();
+    act(() => {
+      contextValue.resetFilter();
+    });
+
     await waitFor(() =>
       expect(contextValue.filteredCharacters).toEqual(mockCharacters)
     );
@@ -97,6 +102,7 @@ describe("CharactersProvider Component", () => {
 
   it("gets a character by ID", async () => {
     let contextValue: any;
+    let character: any = {};
     const TestComponent = () => {
       contextValue = React.useContext(CharactersContext);
       return <div>Test</div>;
@@ -108,7 +114,11 @@ describe("CharactersProvider Component", () => {
       </CharactersProvider>
     );
 
-    const character = await contextValue.getCharacter(1);
-    expect(character).toEqual(mockCharacters[0]);
+    await act(async () => {
+      character = await contextValue.getCharacter(1);
+    });
+    await waitFor(() => {
+      expect(character).toEqual(mockCharacters[0]);
+    });
   });
 });

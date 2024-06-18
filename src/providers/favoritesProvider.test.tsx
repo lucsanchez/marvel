@@ -1,4 +1,4 @@
-import { render, waitFor } from "@testing-library/react";
+import { act, render, waitFor } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { FavoritesProvider } from "./favoritesProvider";
 import { FavoritesContext } from "@/context/favoritesContext";
@@ -34,7 +34,9 @@ describe("FavoritesProvider Component", () => {
     expect(contextValue.favorites).toEqual([]);
     expect(contextValue.filteredFavorites).toEqual([]);
 
-    contextValue.onAddFavorite(mockCharacter1);
+    act(() => {
+      contextValue.onAddFavorite(mockCharacter1);
+    });
 
     await waitFor(() => {
       expect(contextValue.filteredFavorites).toEqual(
@@ -42,7 +44,10 @@ describe("FavoritesProvider Component", () => {
       );
     });
 
-    contextValue.onAddFavorite(mockCharacter2);
+    act(() => {
+      contextValue.onAddFavorite(mockCharacter2);
+    });
+
     await waitFor(() => {
       expect(contextValue.filteredFavorites).toEqual(
         expect.arrayContaining([
@@ -52,7 +57,10 @@ describe("FavoritesProvider Component", () => {
       );
     });
 
-    contextValue.onRemoveFavorite(mockCharacter1.id);
+    act(() => {
+      contextValue.onRemoveFavorite(mockCharacter1.id);
+    });
+
     await waitFor(() =>
       expect(contextValue.favorites).toEqual([mockCharacter2])
     );
@@ -64,15 +72,24 @@ describe("FavoritesProvider Component", () => {
     const isNotFav = contextValue.isFavorite(mockCharacter1.id);
     expect(isNotFav).toBe(false);
 
-    contextValue.onFilterFavorites("Thor");
+    act(() => {
+      contextValue.onFilterFavorites("Thor");
+    });
+
     await waitFor(() =>
       expect(contextValue.filteredFavorites).toEqual([mockCharacter2])
     );
 
-    contextValue.onFilterFavorites("Non-existing");
+    act(() => {
+      contextValue.onFilterFavorites("Non-existing");
+    });
+
     await waitFor(() => expect(contextValue.filteredFavorites).toEqual([]));
 
-    contextValue.resetFavoriteFilter();
+    act(() => {
+      contextValue.resetFavoriteFilter();
+    });
+
     await waitFor(() =>
       expect(contextValue.filteredFavorites).toEqual([mockCharacter2])
     );
