@@ -1,12 +1,16 @@
 import { FC } from "react";
+
+import { CharacterDto } from "@/infraestructure/characterDto";
+
 import { DefaultHeartIcon } from "../icons/defaultHeartIcon";
 import { SmallFilledHeartIcon } from "../icons/smallFIlledHearIcon";
-import styles from "./favorite.module.scss";
-import { CharacterDTO } from "@/infraestructure/characterDTO";
+
 import { useFavorite } from "./use-favorite";
 
+import styles from "./favorite.module.scss";
+
 interface FavoriteProps {
-  character: CharacterDTO;
+  character: CharacterDto;
 }
 
 export const Favorite: FC<FavoriteProps> = ({ character }) => {

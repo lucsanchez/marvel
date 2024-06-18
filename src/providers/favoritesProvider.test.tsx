@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, render, waitFor } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
-import { FavoritesProvider } from "./favoritesProvider";
-import { FavoritesContext } from "@/context/favoritesContext";
 import React from "react";
+import { describe, it, expect } from "vitest";
+
+import { FavoritesContext } from "@/context/favoritesContext";
+
+import { FavoritesProvider } from "./favoritesProvider";
 
 const mockCharacter1 = {
   id: "1",

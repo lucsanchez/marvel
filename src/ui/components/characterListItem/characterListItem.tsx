@@ -1,10 +1,14 @@
 import { FC } from "react";
-import styles from "./characterListItem.module.scss";
-import { CharacterDTO } from "@/infraestructure/characterDTO";
-import { useCharacterListItem } from "./use-character-list-item";
+
+import { CharacterDto } from "@/infraestructure/characterDto";
+
 import { Favorite } from "../favorite/favorite";
 
-export const CharacterListItem: FC<CharacterDTO> = (character) => {
+import { useCharacterListItem } from "./use-character-list-item";
+
+import styles from "./characterListItem.module.scss";
+
+export const CharacterListItem: FC<CharacterDto> = (character) => {
   const { handleCharacterClick } = useCharacterListItem(character);
 
   return (

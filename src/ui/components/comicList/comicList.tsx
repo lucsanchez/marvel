@@ -1,10 +1,13 @@
-import { ComicDTO } from "@/infraestructure/comicDTO";
 import { FC } from "react";
+
+import { ComicDto } from "@/infraestructure/comicDto";
+
 import { ComicListItem } from "../comic/comicListItem";
+
 import styles from "./comicList.module.scss";
 
 interface ComicListProps {
-  comics: ComicDTO[];
+  comics: ComicDto[];
 }
 
 export const ComicList: FC<ComicListProps> = ({ comics }) => {
@@ -12,8 +15,8 @@ export const ComicList: FC<ComicListProps> = ({ comics }) => {
     <div className={styles.container}>
       <h2>Comics</h2>
       <div className={styles.card_container}>
-        {comics.length ? (
-          comics.map((comic: ComicDTO) => (
+        {comics.length > 0 ? (
+          comics.map((comic: ComicDto) => (
             <ComicListItem key={comic.id} {...comic} />
           ))
         ) : (

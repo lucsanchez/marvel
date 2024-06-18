@@ -1,7 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
+
+import { ComicDto } from "@/infraestructure/comicDto";
+
 import { ComicList } from "./comicList";
-import { ComicDTO } from "@/infraestructure/comicDTO";
 
 describe("ComicList Component", () => {
   it("should render the heading", () => {
@@ -15,7 +17,7 @@ describe("ComicList Component", () => {
   });
 
   it("should render a list of comics", () => {
-    const comics: ComicDTO[] = [
+    const comics: ComicDto[] = [
       { id: "1", title: "Comic 1", image: "Description 1", onSaleDate: "2023" },
       { id: "2", title: "Comic 2", image: "Description 2", onSaleDate: "2022" }
     ];
@@ -23,8 +25,8 @@ describe("ComicList Component", () => {
     render(<ComicList comics={comics} />);
 
     // Check if the ComicListItem components are rendered
-    comics.forEach((comic) => {
+    for (const comic of comics) {
       expect(screen.getByText(comic.title)).toBeInTheDocument();
-    });
+    }
   });
 });

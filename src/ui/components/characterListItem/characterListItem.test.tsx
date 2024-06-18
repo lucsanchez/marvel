@@ -1,6 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import { CharacterDTO } from "@/infraestructure/characterDTO"; // Adjust the import path as needed
+
+import { CharacterDto } from "@/infraestructure/characterDto";
+
 import { CharacterListItem } from "./characterListItem";
 
 const mockedFn = vi.fn();
@@ -11,7 +13,7 @@ vi.mock("./use-character-list-item", () => ({
 }));
 
 describe("CharacterListItem", () => {
-  const character: CharacterDTO = {
+  const character: CharacterDto = {
     id: "1",
     name: "Test Character",
     image: "test-image-url",

@@ -1,5 +1,6 @@
 import { cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
+
 const mocks = vi.hoisted(() => {
   return {
     navigate: vi.fn()

@@ -1,10 +1,11 @@
-import { FavoritesContext } from "@/context/favoritesContext";
-import { CharacterDTO } from "@/infraestructure/characterDTO";
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 
+import { FavoritesContext } from "@/context/favoritesContext";
+import { CharacterDto } from "@/infraestructure/characterDto";
+
 export const FavoritesProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [favorites, setFavorites] = useState<CharacterDTO[]>([]);
-  const [filteredFavorites, setFilteredFavorites] = useState<CharacterDTO[]>(
+  const [favorites, setFavorites] = useState<CharacterDto[]>([]);
+  const [filteredFavorites, setFilteredFavorites] = useState<CharacterDto[]>(
     []
   );
 
@@ -12,7 +13,7 @@ export const FavoritesProvider: FC<PropsWithChildren> = ({ children }) => {
     setFilteredFavorites(favorites);
   }, [favorites]);
 
-  const onAddFavorite = (character: CharacterDTO) => {
+  const onAddFavorite = (character: CharacterDto) => {
     setFavorites([...favorites, character]);
   };
 
@@ -22,7 +23,7 @@ export const FavoritesProvider: FC<PropsWithChildren> = ({ children }) => {
   };
 
   const isFavorite = (id: string) => {
-    return !!favorites.find((fav) => fav.id === id);
+    return favorites.some((fav) => fav.id === id);
   };
 
   const onFilterFavorites = (query: string) => {

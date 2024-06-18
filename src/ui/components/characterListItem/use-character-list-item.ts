@@ -1,7 +1,8 @@
-import { CharacterDTO } from "@/infraestructure/characterDTO";
 import { useNavigate } from "react-router-dom";
 
-export const useCharacterListItem = (character: CharacterDTO) => {
+import { CharacterDto } from "@/infraestructure/characterDto";
+
+export const useCharacterListItem = (character: CharacterDto) => {
   const navigate = useNavigate();
 
   const handleCharacterClick = () => {

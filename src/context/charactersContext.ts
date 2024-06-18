@@ -1,21 +1,23 @@
-import { CharacterDTO } from "@/infraestructure/characterDTO";
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext } from "react";
 
+import { CharacterDto } from "@/infraestructure/characterDto";
+
 export type CharactersContextType = {
-  filteredCharacters: CharacterDTO[];
+  filteredCharacters: CharacterDto[];
   loading: boolean;
   onFilterCharacters: (key: string) => Promise<void>;
   resetFilter: () => Promise<void>;
-  getCharacter: (id: string) => Promise<CharacterDTO>;
+  getCharacter: (id: string) => Promise<CharacterDto>;
 };
 
 export const CharactersContext = createContext<CharactersContextType>({
   filteredCharacters: [],
   onFilterCharacters: async (_value) => {
-    return undefined;
+    return;
   },
   resetFilter: async () => {
-    return undefined;
+    return;
   },
   loading: false,
   getCharacter: (_id) => {

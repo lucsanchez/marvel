@@ -1,8 +1,9 @@
-import { CharacterDTO } from "@/infraestructure/characterDTO";
+import { CharacterDto } from "@/infraestructure/characterDto";
+import { ComicDto } from "@/infraestructure/comicDto";
 
 export interface CharacterRepository {
-  getAll: () => Promise<CharacterDTO[]>;
-  getFilteredByName: (query: string) => Promise<CharacterDTO[]>;
-  getComics: (characterId: string) => Promise<any[]>;
-  getCharacterById: (id: string) => Promise<CharacterDTO>;
+  getAll: () => Promise<CharacterDto[]>;
+  getFilteredByName: (query: string) => Promise<CharacterDto[]>;
+  getComics: (characterId: string) => Promise<ComicDto[]>;
+  getCharacterById: (id: string) => Promise<CharacterDto>;
 }

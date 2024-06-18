@@ -1,4 +1,4 @@
-export interface ComicDTO {
+export interface ComicDto {
   id: string;
   title: string;
   onSaleDate: string;

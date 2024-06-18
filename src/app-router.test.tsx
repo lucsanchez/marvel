@@ -1,10 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import { RootLayout } from "./ui/pages/layout";
-import { HomePage } from "./ui/pages/home";
-import { FavoritesPage } from "./ui/pages/favorites";
+import { describe, it, expect } from "vitest";
+
 import { DetailPage } from "./ui/pages/detail";
+import { FavoritesPage } from "./ui/pages/favorites";
+import { HomePage } from "./ui/pages/home";
+import { RootLayout } from "./ui/pages/layout";
 
 vi.mock("./ui/pages/home", () => ({
   HomePage: vi.fn(() => <div>HomePage</div>)

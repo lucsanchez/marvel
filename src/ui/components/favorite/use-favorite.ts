@@ -1,8 +1,9 @@
-import { FavoritesContext } from "@/context/favoritesContext";
-import { CharacterDTO } from "@/infraestructure/characterDTO";
 import { useContext } from "react";
 
-export const useFavorite = (character: CharacterDTO) => {
+import { FavoritesContext } from "@/context/favoritesContext";
+import { CharacterDto } from "@/infraestructure/characterDto";
+
+export const useFavorite = (character: CharacterDto) => {
   const { isFavorite, onAddFavorite, onRemoveFavorite } =
     useContext(FavoritesContext);
 

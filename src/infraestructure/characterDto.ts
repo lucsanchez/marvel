@@ -1,4 +1,4 @@
-export interface CharacterDTO {
+export interface CharacterDto {
   name: string;
   description: string;
   id: string;

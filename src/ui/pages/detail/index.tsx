@@ -1,7 +1,10 @@
-import { useDetail } from "./use-detail";
 import { ComicList } from "@/ui/components/comicList/comicList";
-import styles from "./detail.module.scss";
 import { Favorite } from "@/ui/components/favorite/favorite";
+
+import { useDetail } from "./use-detail";
+
+import styles from "./detail.module.scss";
+
 
 export const DetailPage = () => {
   const { data, character, loading } = useDetail();

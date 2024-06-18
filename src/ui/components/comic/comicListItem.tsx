@@ -1,9 +1,11 @@
-import { ComicDTO } from "@/infraestructure/comicDTO";
 import { FC } from "react";
-import styles from "./comicListItem.module.scss";
+
+import { ComicDto } from "@/infraestructure/comicDto";
 import { isValidDate } from "@/ui/utils/dates";
 
-export const ComicListItem: FC<ComicDTO> = (comic) => {
+import styles from "./comicListItem.module.scss";
+
+export const ComicListItem: FC<ComicDto> = (comic) => {
   const onSaleDate = isValidDate(comic.onSaleDate)
     ? new Date(comic.onSaleDate).getFullYear()
     : "";

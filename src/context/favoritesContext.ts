@@ -1,10 +1,11 @@
-import { CharacterDTO } from "@/infraestructure/characterDTO";
 import { createContext } from "react";
 
+import { CharacterDto } from "@/infraestructure/characterDto";
+
 export type FavoritesContextType = {
-  favorites: CharacterDTO[];
-  filteredFavorites: CharacterDTO[];
-  onAddFavorite: (character: CharacterDTO) => void;
+  favorites: CharacterDto[];
+  filteredFavorites: CharacterDto[];
+  onAddFavorite: (character: CharacterDto) => void;
   onRemoveFavorite: (id: string) => void;
   isFavorite: (id: string) => boolean;
   onFilterFavorites: (query: string) => void;
@@ -14,17 +15,21 @@ export type FavoritesContextType = {
 export const FavoritesContext = createContext<FavoritesContextType>({
   favorites: [],
   filteredFavorites: [],
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onAddFavorite: (_character) => {
-    return undefined;
+    return;
   },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onRemoveFavorite: (_id) => {
-    return undefined;
+    return;
   },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   isFavorite: (_id) => false,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onFilterFavorites: (_query) => {
-    return undefined;
+    return;
   },
   resetFavoriteFilter: () => {
-    return undefined;
+    return;
   }
 });

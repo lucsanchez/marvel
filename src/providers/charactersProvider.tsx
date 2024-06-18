@@ -1,16 +1,22 @@
+import { FC, PropsWithChildren, useEffect, useState } from "react";
+
 import { getAllCharacters } from "@/application/characters/getAll";
 import { getCharacterById } from "@/application/characters/getCharacterById";
 import { getFilteredCharactersByName } from "@/application/characters/getFilteredByname";
 import { CharactersContext } from "@/context/charactersContext";
 import { createApiCharacaterRepository } from "@/infraestructure/apiCharacterRepository";
-import { CharacterDTO } from "@/infraestructure/characterDTO";
-import { FC, PropsWithChildren, useEffect, useState } from "react";
+import { CharacterDto } from "@/infraestructure/characterDto";
 
 const repository = createApiCharacaterRepository();
 
+const getCharacter = async (id: string) => {
+  const response = await getCharacterById(repository, id);
+  return response;
+};
+
 export const CharactersProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [characters, setCharacters] = useState<CharacterDTO[]>([]);
-  const [filteredCharacters, setFilteredCharacters] = useState<CharacterDTO[]>(
+  const [characters, setCharacters] = useState<CharacterDto[]>([]);
+  const [filteredCharacters, setFilteredCharacters] = useState<CharacterDto[]>(
     []
   );
 
@@ -34,11 +40,6 @@ export const CharactersProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const resetFilter = async () => {
     setFilteredCharacters(characters);
-  };
-
-  const getCharacter = async (id: string) => {
-    const response = await getCharacterById(repository, id);
-    return response;
   };
 
   return (

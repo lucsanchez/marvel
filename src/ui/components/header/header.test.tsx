@@ -1,9 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
 import { BrowserRouter } from "react-router-dom";
+import { describe, it, expect } from "vitest";
+
 import { FavoritesContext } from "@/context/favoritesContext";
-import { Header } from "./header";
 import { ROUTES } from "@/routes";
+
+import { Header } from "./header";
 
 // Mock data for FavoritesContext
 const mockFavorites = {

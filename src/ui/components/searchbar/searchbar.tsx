@@ -1,7 +1,10 @@
 import { ChangeEvent } from "react";
+
 import { SearchIcon } from "../icons/searchIcon";
-import styles from "./searchbar.module.scss";
+
 import { useSearchbar } from "./use-searchbar";
+
+import styles from "./searchbar.module.scss";
 
 export const Searchbar = () => {
   const { characters, handleOnFilter } = useSearchbar();

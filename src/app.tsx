@@ -1,4 +1,4 @@
-import "./App.css";
+import "./app.css";
 import { AppRouter } from "./app-router";
 import { CharactersProvider } from "./providers/charactersProvider";
 import { FavoritesProvider } from "./providers/favoritesProvider";

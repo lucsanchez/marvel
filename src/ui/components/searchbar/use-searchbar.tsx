@@ -1,8 +1,9 @@
+import { useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 import { CharactersContext } from "@/context/charactersContext";
 import { FavoritesContext } from "@/context/favoritesContext";
 import { ROUTES } from "@/routes";
-import { useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 export const useSearchbar = () => {
   const { onFilterCharacters, resetFilter, filteredCharacters } =
@@ -22,6 +23,7 @@ export const useSearchbar = () => {
         resetFilter();
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFavoritePath]);
 
   const characters = isFavoritePath ? filteredFavorites : filteredCharacters;

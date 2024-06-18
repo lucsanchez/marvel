@@ -1,8 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import { DetailPage } from "./index";
-import * as useDetailHook from "./use-detail";
 import { BrowserRouter } from "react-router-dom";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+
+import * as useDetailHook from "./use-detail";
+
+import { DetailPage } from "./index";
 
 describe("DetailPage Component", () => {
   const mockCharacter = {

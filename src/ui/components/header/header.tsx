@@ -1,9 +1,13 @@
-import { ROUTES } from "@/routes";
-import styles from "./header.module.scss";
-import { FilledHearIcon } from "../icons/filledHeartIcon";
 import { useContext } from "react";
-import { FavoritesContext } from "@/context/favoritesContext";
 import { Link } from "react-router-dom";
+
+import { FavoritesContext } from "@/context/favoritesContext";
+import { ROUTES } from "@/routes";
+
+import { FilledHearIcon } from "../icons/filledHeartIcon";
+
+import styles from "./header.module.scss";
+
 
 export const Header = () => {
   const { favorites } = useContext(FavoritesContext);

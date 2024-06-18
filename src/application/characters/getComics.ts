@@ -1,9 +1,9 @@
 import { CharacterRepository } from "@/domain/characterRepository";
-import { ComicDTO } from "@/infraestructure/comicDTO";
+import { ComicDto } from "@/infraestructure/comicDto";
 
 export async function getComics(
   repository: CharacterRepository,
   characterId: string
-): Promise<ComicDTO[]> {
+): Promise<ComicDto[]> {
   return repository.getComics(characterId);
 }

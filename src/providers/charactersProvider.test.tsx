@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, render, waitFor } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
-import { CharactersProvider } from "./charactersProvider";
-import { CharactersContext } from "@/context/charactersContext";
 import React from "react";
+import { describe, it, expect, vi } from "vitest";
+
+import { CharactersContext } from "@/context/charactersContext";
+
+import { CharactersProvider } from "./charactersProvider";
 
 const mockCharacters = [
   {

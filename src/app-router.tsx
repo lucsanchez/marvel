@@ -1,9 +1,10 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
+
 import { ROUTES } from "./routes";
-import { RootLayout } from "./ui/pages/layout";
-import { HomePage } from "./ui/pages/home";
-import { FavoritesPage } from "./ui/pages/favorites";
 import { DetailPage } from "./ui/pages/detail";
+import { FavoritesPage } from "./ui/pages/favorites";
+import { HomePage } from "./ui/pages/home";
+import { RootLayout } from "./ui/pages/layout";
 
 const RoutesTree = () => (
   <Routes>
