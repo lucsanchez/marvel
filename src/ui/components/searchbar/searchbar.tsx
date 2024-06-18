@@ -1,10 +1,10 @@
 import { ChangeEvent } from "react";
 import { SearchIcon } from "../icons/searchIcon";
 import styles from "./searchbar.module.scss";
-import { UseSearchbar } from "./use-searchbar";
+import { useSearchbar } from "./use-searchbar";
 
 export const Searchbar = () => {
-  const { characters, handleOnFilter } = UseSearchbar();
+  const { characters, handleOnFilter } = useSearchbar();
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;

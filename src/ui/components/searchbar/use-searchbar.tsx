@@ -4,7 +4,7 @@ import { ROUTES } from "@/routes";
 import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-export const UseSearchbar = () => {
+export const useSearchbar = () => {
   const { onFilterCharacters, resetFilter, filteredCharacters } =
     useContext(CharactersContext);
 
